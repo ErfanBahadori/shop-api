@@ -1,13 +1,17 @@
-module.exports = {
+const config = {
   apps: [
     {
       name: "shop-api",
       script: "./dist/server.js",
       watch: true,
-      env: {
-        PORT: 4000,
+      env_production: {
         NODE_ENV: "production",
+      },
+      env_development: {
+        NODE_ENV: "development",
       },
     },
   ],
 };
+
+export default config;
