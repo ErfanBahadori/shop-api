@@ -1,4 +1,4 @@
-const config = {
+export default {
   apps: [
     {
       name: "shop-api",
@@ -13,5 +13,3 @@ const config = {
     },
   ],
 };
-
-export default config;
