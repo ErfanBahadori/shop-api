@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "tsx watch ./src/server.ts",
     "build": "tsc",
-    "start": "set NODE_ENV=production && node ./dist/server.js",
+    "start": "node ./dist/server.js",
     "prisma:migrate": "npx prisma migrate dev",
     "prisma:generate": "npx prisma generate"
   },
