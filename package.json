@@ -2,8 +2,9 @@
   "scripts": {
     "dev": "tsx watch ./src/server.ts",
     "build": "tsc",
-    "start": "node ./dist/server.js",
+    "start": "NODE_ENV=production node ./dist/server.js",
     "prisma:migrate": "npx prisma migrate dev",
+    "prisma:migrate:deploy": "npx prisma migrate deploy",
     "prisma:generate": "npx prisma generate"
   },
   "type": "module",
