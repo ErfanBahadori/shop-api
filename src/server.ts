@@ -24,10 +24,10 @@ app.use("/media", mediaRoutes);
 
 const port = Number(process.env.PORT) || 4000;
 
-app.listen(port, "127.0.0.1", (err?: Error) => {
+app.listen(port, (err?: Error) => {
   if (err) {
     console.error(err);
     return;
   }
-  console.log(`Server running on http://127.0.0.1:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
