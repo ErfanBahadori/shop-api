@@ -17,14 +17,15 @@ app.use(
 );
 app.use(helmet());
 
-app.use(
-  "/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, {
-    explorer: true,
-  })
-);
-
+if (process.env.NODE_ENV !== "production") {
+  app.use(
+    "/docs",
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerSpec, {
+      explorer: true,
+    })
+  );
+}
 import productRoutes from "./routes/product.js";
 import mediaRoutes from "./routes/media.js";
 import userRoutes from "./routes/user.js";
@@ -40,5 +41,6 @@ app.listen(port, (err?: Error) => {
     console.error(err);
     return;
   }
+  console.log("env:", process.env.NODE_ENV);
   console.log(`Server running on http://localhost:${port}`);
 });
