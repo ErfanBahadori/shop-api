@@ -41,6 +41,14 @@ export class Product {
     const product = await prisma.product.update({
       where: { id },
       data,
+      include: {
+        media: {
+          select: {
+            id: true,
+            url: true,
+          },
+        },
+      },
     });
     return product;
   }

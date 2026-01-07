@@ -3,9 +3,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 
-import userRoutes from "./routes/user.js";
-import productRoutes from "./routes/product.js";
-import mediaRoutes from "./routes/media.js";
+import swaggerUi from "swagger-ui-express";
+import { swaggerSpec } from "./docs/swagger.js";
 
 const app = express();
 
@@ -18,9 +17,21 @@ app.use(
 );
 app.use(helmet());
 
-app.use("/user", userRoutes);
+app.use(
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, {
+    explorer: true,
+  })
+);
+
+import productRoutes from "./routes/product.js";
+import mediaRoutes from "./routes/media.js";
+import userRoutes from "./routes/user.js";
+
 app.use("/product", productRoutes);
 app.use("/media", mediaRoutes);
+app.use("/user", userRoutes);
 
 const port = Number(process.env.PORT) || 4000;
 
